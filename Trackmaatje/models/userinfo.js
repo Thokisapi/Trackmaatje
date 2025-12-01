@@ -8,7 +8,7 @@ const userInfo = new Schema({
     ref: "User",
     required: true,
   },
-  age:{
+  age: {
     type: Number,
     required: true,
   },
@@ -19,6 +19,22 @@ const userInfo = new Schema({
   length: {
     type: Number,
     required: true,
+  },
+  calories: {
+    type: Number,
+    default: 0,
+  },
+  fats: {
+    type: Number,
+    default: 0,
+  },
+  carbs: {
+    type: Number,
+    default: 0,
+  },
+  proteins: {
+    type: Number,
+    default: 0,
   },
   activitylevel: {
     type: String,
