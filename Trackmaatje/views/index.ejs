@@ -1,13 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/output.css" rel="stylesheet">
-    <title><%= title %></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/output.css" rel="stylesheet">
+  <title>
+    <%= title %>
+  </title>
 </head>
+
 <body class="min-h-screen bg-white flex items-center justify-center">
-    <h1 class="text-4xl font-bold text-gray-800">Welcome to Trackmaatje!</h1>
-    
+
+  <div class="min-h-screen bg-gray-50">
+
+    <header class="bg-white border-b size-full border-gray-200 px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-xl font-bold text-gray-800">Trackmaatje</h1>
+          <p class="text-sm text-gray-500">Macrotracker</p>
+        </div>
+        <div class="flex items-center gap-4">
+
+          <a href="/foodplan" class="p-2 w-30 hover:bg-gray-100 rounded-lg transition-colors">
+            <span class="w-5 h-5 text-black-600">Foodplan
+              <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5.08499 2.07913C5.12172 1.69269 5.30121 1.33383 5.58839 1.07265C5.87557 0.811474 6.24981 0.666748 6.63799 0.666748C7.02617 0.666748 7.40041 0.811474 7.68759 1.07265C7.97477 1.33383 8.15426 1.69269 8.19099 2.07913C8.21307 2.32877 8.29496 2.56941 8.42974 2.78069C8.56453 2.99197 8.74823 3.16767 8.9653 3.29291C9.18237 3.41816 9.42642 3.48926 9.67679 3.50021C9.92716 3.51116 10.1765 3.46162 10.4037 3.3558C10.7564 3.19565 11.1561 3.17248 11.525 3.29079C11.8939 3.4091 12.2055 3.66043 12.3993 3.99587C12.5931 4.3313 12.6552 4.72684 12.5734 5.10551C12.4917 5.48418 12.2719 5.81887 11.957 6.04446C11.7519 6.18836 11.5845 6.37954 11.4689 6.60181C11.3534 6.82409 11.293 7.07094 11.293 7.32146C11.293 7.57199 11.3534 7.81884 11.4689 8.04111C11.5845 8.26339 11.7519 8.45457 11.957 8.59846C12.2719 8.82405 12.4917 9.15875 12.5734 9.53742C12.6552 9.91608 12.5931 10.3116 12.3993 10.6471C12.2055 10.9825 11.8939 11.2338 11.525 11.3521C11.1561 11.4705 10.7564 11.4473 10.4037 11.2871C10.1765 11.1813 9.92716 11.1318 9.67679 11.1427C9.42642 11.1537 9.18237 11.2248 8.9653 11.35C8.74823 11.4753 8.56453 11.651 8.42974 11.8622C8.29496 12.0735 8.21307 12.3142 8.19099 12.5638C8.15426 12.9502 7.97477 13.3091 7.68759 13.5703C7.40041 13.8315 7.02617 13.9762 6.63799 13.9762C6.24981 13.9762 5.87557 13.8315 5.58839 13.5703C5.30121 13.3091 5.12172 12.9502 5.08499 12.5638C5.06295 12.3141 4.98105 12.0733 4.84623 11.862C4.71141 11.6506 4.52764 11.4749 4.31048 11.3496C4.09332 11.2244 3.84917 11.1533 3.59871 11.1424C3.34825 11.1315 3.09886 11.1812 2.87165 11.2871C2.51891 11.4473 2.11921 11.4705 1.75032 11.3521C1.38144 11.2338 1.06977 10.9825 0.875976 10.6471C0.682184 10.3116 0.620131 9.91608 0.701894 9.53742C0.783658 9.15875 1.00339 8.82405 1.31832 8.59846C1.5234 8.45457 1.69081 8.26339 1.80638 8.04111C1.92195 7.81884 1.98229 7.57199 1.98229 7.32146C1.98229 7.07094 1.92195 6.82409 1.80638 6.60181C1.69081 6.37954 1.5234 6.18836 1.31832 6.04446C1.00383 5.81876 0.784488 5.48419 0.702922 5.10578C0.621356 4.72738 0.683393 4.33216 0.876977 3.99694C1.07056 3.66172 1.38186 3.41045 1.75038 3.29196C2.1189 3.17347 2.51831 3.19622 2.87099 3.3558C3.09816 3.46162 3.34748 3.51116 3.59785 3.50021C3.84823 3.48926 4.09228 3.41816 4.30935 3.29291C4.52642 3.16767 4.71012 2.99197 4.8449 2.78069C4.97968 2.56941 5.06158 2.32877 5.08365 2.07913"
+                  stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M6.6377 9.32178C7.74226 9.32178 8.6377 8.42635 8.6377 7.32178C8.6377 6.21721 7.74226 5.32178 6.6377 5.32178C5.53313 5.32178 4.6377 6.21721 4.6377 7.32178C4.6377 8.42635 5.53313 9.32178 6.6377 9.32178Z"
+                  stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </a>
+          <a href="/achievements" class="p-2 w-40 hover:bg-gray-100 rounded-lg transition-colors">
+            <span class="w-5 h-5 text-black-600">Achievements
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_627_385)">
+                  <path
+                    d="M6.66675 9.77344V10.8574C6.66423 11.0859 6.60307 11.3098 6.48914 11.5078C6.3752 11.7058 6.21231 11.8712 6.01608 11.9881C5.59951 12.2966 5.26064 12.6981 5.0264 13.1605C4.79217 13.623 4.66902 14.1337 4.66675 14.6521"
+                    stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M9.33325 9.77344V10.8574C9.33577 11.0859 9.39693 11.3098 9.51086 11.5078C9.6248 11.7058 9.78769 11.8712 9.98392 11.9881C10.4005 12.2966 10.7394 12.6981 10.9736 13.1605C11.2078 13.623 11.331 14.1337 11.3333 14.6521"
+                    stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M12 6.00008H13C13.442 6.00008 13.866 5.82449 14.1785 5.51193C14.4911 5.19937 14.6667 4.77544 14.6667 4.33341C14.6667 3.89139 14.4911 3.46746 14.1785 3.1549C13.866 2.84234 13.442 2.66675 13 2.66675H12"
+                    stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M2.66675 14.6667H13.3334" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path
+                    d="M4 5.99992C4 7.06078 4.42143 8.0782 5.17157 8.82835C5.92172 9.57849 6.93913 9.99992 8 9.99992C9.06087 9.99992 10.0783 9.57849 10.8284 8.82835C11.5786 8.0782 12 7.06078 12 5.99992V1.99992C12 1.82311 11.9298 1.65354 11.8047 1.52851C11.6797 1.40349 11.5101 1.33325 11.3333 1.33325H4.66667C4.48986 1.33325 4.32029 1.40349 4.19526 1.52851C4.07024 1.65354 4 1.82311 4 1.99992V5.99992Z"
+                    stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                  <path
+                    d="M3.99992 6.00008H2.99992C2.55789 6.00008 2.13397 5.82449 1.82141 5.51193C1.50885 5.19937 1.33325 4.77544 1.33325 4.33341C1.33325 3.89139 1.50885 3.46746 1.82141 3.1549C2.13397 2.84234 2.55789 2.66675 2.99992 2.66675H3.99992"
+                    stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                </g>
+                <defs>
+                  <clipPath id="clip0_627_385">
+                    <rect width="16" height="16" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </span>
+          </a>
+          <a href="/login" class="p-2 w-30 hover:bg-gray-100 hover:border-2 border-gray-200  rounded-lg transition-colors">
+            <span class="w-5 h-5 text-black-600">Logout
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.6667 11.3334L14.0001 8.00008L10.6667 4.66675" stroke="#0A0A0A" stroke-width="1.33333"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14 8H6" stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M6 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14048 2.97971 2 3.33333 2H6"
+                  stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+             </span>
+            </a>
+        </div>
+      </div>
+    </header>
+
+
+    <main class="max-w-7xl mx-auto px-6 py-8">
+
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-semibold text-gray-800">Daily Overview</h2>
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-200">
+            <span class="text-sm text-gray-600">Streak:</span>
+            <span class="font-semibold text-gray-800">69</span>
+            <Flame class="w-5 h-5 text-orange-500" />
+          </div>
+          <button
+            class=" w-20flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
+            <Plus class="w-5 h-5" />
+            Add Food
+          </button>
+        </div>
+      </div>
+
+
+      <div class="grid grid-cols-4 gap-4 mb-8">
+
+        <div class="bg-white rounded-lg border border-gray-200 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm text-gray-600">Protein</span>
+            <Droplet class="w-5 h-5 text-red-400" />
+          </div>
+          <div class="mb-2">
+            <span class="text-2xl font-bold text-gray-800">53</span>
+            <span class="text-gray-500">/ 180 g</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+            <div class="bg-red-400 h-2 rounded-full" style="width: 29%;"></div>
+          </div>
+          <span class="text-xs text-gray-500">29% of daily goal</span>
+        </div>
+
+        <div class="bg-white rounded-lg border border-gray-200 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm text-gray-600">Carbs</span>
+            <Apple class="w-5 h-5 text-yellow-500" />
+          </div>
+          <div class="mb-2">
+            <span class="text-2xl font-bold text-gray-800">54</span>
+            <span class="text-gray-500"> / 294 g</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+            <div class="bg-yellow-500 h-2 rounded-full" style="width: 18%;"></div>
+          </div>
+          <span class="text-xs text-gray-500">18% of daily goal</span>
+        </div>
+
+
+        <div class="bg-white rounded-lg border border-gray-200 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm text-gray-600">Fats</span>
+            <Droplet class="w-5 h-5 text-cyan-400" />
+          </div>
+          <div class="mb-2">
+            <span class="text-2xl font-bold text-gray-800">10</span>
+            <span class="text-gray-500"> / 99 g</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+            <div class="bg-cyan-400 h-2 rounded-full" style="width: 22%;"></div>
+          </div>
+          <span class="text-xs text-gray-500">10% of daily goal</span>
+        </div>
+
+
+        <div class="bg-white rounded-lg border border-gray-200 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm text-gray-600">Calories</span>
+            <Zap class="w-5 h-5 text-orange-400" />
+          </div>
+          <div class="mb-2">
+            <span class="text-2xl font-bold text-gray-800">531</span>
+            <span class="text-gray-500"> / 2406 kcal</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+            <div class="bg-orange-400 h-2 rounded-full" style="width: 22%;"></div>
+          </div>
+          <span class="text-xs text-gray-500">22% of daily goal</span>
+        </div>
+      </div>
+
+
+      <div class="bg-white rounded-lg border border-gray-200 mb-4">
+        <div class="border-b border-gray-200 px-6 py-4">
+          <h3 class="text-lg font-semibold text-gray-800">Breakfast</h3>
+        </div>
+        <div class="px-6 py-4">
+          <table class="w-full">
+            <thead>
+              <tr class="text-left text-sm text-gray-600 border-b border-gray-200">
+                <th class="pb-3 font-medium">Food</th>
+                <th class="pb-3 font-medium text-right">Protein (g)</th>
+                <th class="pb-3 font-medium text-right">Carbs (g)</th>
+                <th class="pb-3 font-medium text-right">Fats (g)</th>
+                <th class="pb-3 font-medium text-right">Calories</th>
+                <th class="pb-3 w-12"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-100">
+                <td class="py-4 text-gray-800">Greek Yogurt</td>
+                <td class="py-4 text-right text-gray-800">17</td>
+                <td class="py-4 text-right text-gray-800">9</td>
+                <td class="py-4 text-right text-gray-800">5</td>
+                <td class="py-4 text-right text-gray-800">150</td>
+                <td class="py-4 text-right">
+                  <button class="p-1 hover:bg-gray-100 rounded">
+                    <span class="text-gray-400">⋮</span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg border border-gray-200">
+        <div class="border-b border-gray-200 px-6 py-4">
+          <h3 class="text-lg font-semibold text-gray-800">Lunch</h3>
+        </div>
+        <div class="px-6 py-4">
+          <table class="w-full">
+            <thead>
+              <tr class="text-left text-sm text-gray-600 border-b border-gray-200">
+                <th class="pb-3 font-medium">Food</th>
+                <th class="pb-3 font-medium text-right">Protein (g)</th>
+                <th class="pb-3 font-medium text-right">Carbs (g)</th>
+                <th class="pb-3 font-medium text-right">Fats (g)</th>
+                <th class="pb-3 font-medium text-right">Calories</th>
+                <th class="pb-3 w-12"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-100">
+                <td class="py-4 text-gray-800">Grilled Chicken Breast</td>
+                <td class="py-4 text-right text-gray-800">31</td>
+                <td class="py-4 text-right text-gray-800">0</td>
+                <td class="py-4 text-right text-gray-800">3.6</td>
+                <td class="py-4 text-right text-gray-800">165</td>
+                <td class="py-4 text-right">
+                  <button class="p-1 hover:bg-gray-100 rounded">
+                    <span class="text-gray-400">⋮</span>
+                  </button>
+                </td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-4 text-gray-800">Brown Rice</td>
+                <td class="py-4 text-right text-gray-800">5</td>
+                <td class="py-4 text-right text-gray-800">45</td>
+                <td class="py-4 text-right text-gray-800">1.6</td>
+                <td class="py-4 text-right text-gray-800">216</td>
+                <td class="py-4 text-right">
+                  <button class="p-1 hover:bg-gray-100 rounded">
+                    <span class="text-gray-400">⋮</span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
 </body>
+
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/output.css" rel="stylesheet">
+    <title>Foodplan</title>
+</head>
+
+<body>
+
+    <div class="min-h-screen py-8 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-8">
+                <a href="/" class="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-4">
+                    <span class="text-xl">←</span>
+                    <span>Back</span>
+                </a>
+                <h1 class="text-2xl font-bold text-gray-800 mb-2">Customize Your Food Plan</h1>
+                <p class="text-gray-600">Set your goals and get personalized macro targets</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg border border-gray-200 p-6 space-y-6">
+                    <div>
+                        <h2 class="text-lg font-semibold text-gray-800 mb-2">Your Information</h2>
+                        <p class="text-sm text-gray-600">Enter your physical data to calculate your personalized plan
+                        </p>
+                    </div>
+                    <form action="/userinfo" method="post">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="weight">Weight (kg)</label>
+                            <input type="number" name="weight" id="weight" placeholder="84"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="height">Height (cm)</label>
+                            <input type="number" name="height" id="height" placeholder="187"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="age">Age (years)</label>
+                            <input type="number" name="age" id="age" placeholder="26"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Gender</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="gender" value="male"
+                                        class="w-4 h-4 text-green-500 focus:ring-green-500">
+                                    <span class="text-gray-700">Male</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="gender" value="female"
+                                        class="w-4 h-4 text-green-500 focus:ring-green-500">
+                                    <span class="text-gray-700">Female</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" for="activity">Activity
+                                Level</label>
+                            <select id="activity" name="activitylevel"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white">
+                                <option value="">Select activity level</option>
+                                <option name="sedentary" value="sedentary">Sedentary (little or no exercise)</option>
+                                <option name="Lighly" value="light">Lightly Active (1-3 days/week)</option>
+                                <option name="moderately" value="moderate">Moderately Active (3-5 days/week)</option>
+                                <option name="very" value="very">Very Active (6-7 days/week)</option>
+                                <option name="extra" value="extra">Extra Active (intense exercise daily)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Goal</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="goal" value="lose"
+                                        class="w-4 h-4 text-green-500 focus:ring-green-500">
+                                    <span class="text-gray-700">Lose weight</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="goal" value="maintain"
+                                        class="w-4 h-4 text-green-500 focus:ring-green-500">
+                                    <span class="text-gray-700">Maintain weight</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="goal" value="gain"
+                                        class="w-4 h-4 text-green-500 focus:ring-green-500">
+                                    <span class="text-gray-700">Gain weight</span>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="w-full bg-green-500 text-white py-3 px-4 rounded-md hover:bg-green-600 transition-colors font-medium">
+                            Calculate Plan
+                        </button>
+                    </form>
+                    </div>       
+                <div class="bg-white rounded-lg border border-gray-200 p-6">
+                    <h2 class="text-lg font-semibold text-gray-800 mb-2">Your Personalized Plan</h2>
+                    <p class="text-sm text-gray-600 mb-6">Daily macro nutrient targets based on your information</p>
+                    <div class="bg-gray-50 rounded-lg p-6 text-center">
+                        <p class="text-gray-600">
+                            Fill in your information and click "Calculate Plan" to see your personalized targets
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

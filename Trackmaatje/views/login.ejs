@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/output.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div class="w-full max-w-md bg-white rounded-lg ">
+
+            <div class="flex flex-col items-center mb-6">
+                <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-3">
+                    <Lock class="w-8 h-8 text-white" />
+                    <div><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21.3334 2.66675L18.2667 5.73341C17.5338 6.48113 17.1233 7.4864 17.1233 8.53341C17.1233 9.58043 17.5338 10.5857 18.2667 11.3334L20.6667 13.7334C21.4144 14.4663 22.4197 14.8768 23.4667 14.8768C24.5137 14.8768 25.519 14.4663 26.2667 13.7334L29.3334 10.6667"
+                                stroke="white" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M20.0001 19.9999L4.40005 4.3999C3.8679 4.92131 3.44513 5.54366 3.15651 6.2305C2.8679 6.91735 2.71924 7.65488 2.71924 8.3999C2.71924 9.14492 2.8679 9.88245 3.15651 10.5693C3.44513 11.2561 3.8679 11.8785 4.40005 12.3999L14.1334 22.1332C15.0667 23.0666 16.8001 23.0666 17.8667 22.1332L20.0001 19.9999ZM20.0001 19.9999L29.3334 29.3332"
+                                stroke="white" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M2.80005 29.0667L11.3334 20.6667" stroke="white" stroke-width="2.66667"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M25.3333 6.66675L16 16.0001" stroke="white" stroke-width="2.66667"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+                <h1 class="text-xl font-semibold text-gray-800">Trackmaatje</h1>
+                <p class="text-sm text-gray-500 mt-1">Track your macro numbers with ease</p>
+            </div>
+
+            <div class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-md mb-6">
+                Login
+            </div>
+
+            <div class="mb-6">
+                <h2 class="text-lg font-medium text-gray-800 mb-1">Welcome back</h2>
+                <p class="text-sm text-gray-500">Enter your credentials to access your account</p>
+            </div>
+            <form action="/login" method="post">
+            <div class="mb-4">
+                <label htmlFor="email" class="block text-sm font-medium text-gray-700 mb-2">
+                    Email
+                </label>
+                <input type="email" name="email" id="email" placeholder="joe@example.com" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+            </div>
+       
+
+            <div class="mb-6">
+                <label htmlFor="password" class="block text-sm font-medium text-gray-700 mb-2">
+                    Password
+                </label>
+                <input type="password" name="password" id="password" placeholder="••••••••" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" />
+            </div>
+
+            <button class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors mb-4 font-medium"> Log in</button>
+            </form>
+
+            <div class="text-center text-sm text-gray-600">
+                Don't have an account already?
+                <a href="/register" class="text-green-500 hover:text-green-600 font-medium">
+                    Create one here!
+                </a>
+            </div>
+        </div>
+</body>
+
+</html>
