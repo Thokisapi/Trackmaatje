@@ -37,7 +37,8 @@ app.use("/", loginRoute);
 app.use("/", userInfoRoute);
 
 app.get("/", async (req, res) => {  
-  const userId = req.session.userId;
+  const userId = req.session.userId;  
+
   console.log("User ID:", userId);
   let plan = null;
 
@@ -50,7 +51,10 @@ app.get("/", async (req, res) => {
 
   res.render("index", {
     title: "home",
-    plan
+    plan,
+    userId,
+    firstname: req.session.firstname || null,
+    lastname: req.session.lastname || null,
   });
 });
 

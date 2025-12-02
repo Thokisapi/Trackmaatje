@@ -24,6 +24,7 @@ router.post("/login", async (req, res) => {
         }
         
         req.session.userId = user._id;
+        req.session.firstname = user.firstname;
         
         res.redirect("/");
     } catch (err) {
