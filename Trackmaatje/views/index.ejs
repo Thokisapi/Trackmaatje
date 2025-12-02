@@ -37,8 +37,7 @@
           </a>
           <a href="/achievements" class="p-2 w-40 hover:bg-gray-100 rounded-lg transition-colors">
             <span class="w-5 h-5 text-black-600">Achievements
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_627_385)">
                   <path
                     d="M6.66675 9.77344V10.8574C6.66423 11.0859 6.60307 11.3098 6.48914 11.5078C6.3752 11.7058 6.21231 11.8712 6.01608 11.9881C5.59951 12.2966 5.26064 12.6981 5.0264 13.1605C4.79217 13.623 4.66902 14.1337 4.66675 14.6521"
@@ -66,7 +65,8 @@
               </svg>
             </span>
           </a>
-          <a href="/login" class="p-2 w-30 hover:bg-gray-100 hover:border-2 border-gray-200  rounded-lg transition-colors">
+          <button action="/logout"
+            class="p-2 w-30 hover:bg-gray-100 hover:border-2 border-gray-200  rounded-lg transition-colors">
             <span class="w-5 h-5 text-black-600">Logout
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.6667 11.3334L14.0001 8.00008L10.6667 4.66675" stroke="#0A0A0A" stroke-width="1.33333"
@@ -77,8 +77,10 @@
                   d="M6 14H3.33333C2.97971 14 2.64057 13.8595 2.39052 13.6095C2.14048 13.3594 2 13.0203 2 12.6667V3.33333C2 2.97971 2.14048 2.64057 2.39052 2.39052C2.64057 2.14048 2.97971 2 3.33333 2H6"
                   stroke="#0A0A0A" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-             </span>
-            </a>
+            </span>
+          </button>
+          <div class="p-2 w-30 hover:bg-gray-100 hover:border-2 border-gray-200  rounded-lg transition-colors">
+          </div>
         </div>
       </div>
     </header>
@@ -105,67 +107,113 @@
 
       <div class="grid grid-cols-4 gap-4 mb-8">
 
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm text-gray-600">Calories</span>
+          </div>
+
+          <% if (plan) { %>
+            <div class="mb-2">
+              <span class="text-2xl font-bold text-gray-800">
+                <%= plan.calories %>
+              </span>
+              <span class="text-gray-500"> / <%= plan.calories %> kcal</span>
+            </div>
+
+            <% let calPercent=Math.round((0 / plan.calories) * 100); %>
+
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                <div class="bg-orange-400 h-2 rounded-full" style="width: <%= calPercent %>%"></div>
+              </div>
+              <span class="text-xs text-gray-500">
+                <%= calPercent %>% of daily goal
+              </span>
+              <% } else { %>
+                <p class="text-gray-500">No plan yet</p>
+                <% } %>
+        </div>
+
         <div class="bg-white rounded-lg border border-gray-200 p-4">
           <div class="flex items-center justify-between mb-3">
             <span class="text-sm text-gray-600">Protein</span>
-            <Droplet class="w-5 h-5 text-red-400" />
           </div>
-          <div class="mb-2">
-            <span class="text-2xl font-bold text-gray-800">53</span>
-            <span class="text-gray-500">/ 180 g</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
-            <div class="bg-red-400 h-2 rounded-full" style="width: 29%;"></div>
-          </div>
-          <span class="text-xs text-gray-500">29% of daily goal</span>
+
+          <% if (plan) { %>
+            <div class="mb-2">
+              <span class="text-2xl font-bold text-gray-800">
+                <%= plan.proteins %>
+              </span>
+              <span class="text-gray-500"> / <%= plan.proteins %> g</span>
+            </div>
+
+            <% let proteinPercent=Math.round((0 / plan.proteins) * 100); %>
+
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                <div class="bg-red-400 h-2 rounded-full" style="width: <%= proteinPercent %>%"></div>
+              </div>
+              <span class="text-xs text-gray-500">
+                <%= proteinPercent %>% of daily goal
+              </span>
+              <% } else { %>
+                <p class="text-gray-500">No plan yet</p>
+                <% } %>
         </div>
 
         <div class="bg-white rounded-lg border border-gray-200 p-4">
           <div class="flex items-center justify-between mb-3">
             <span class="text-sm text-gray-600">Carbs</span>
-            <Apple class="w-5 h-5 text-yellow-500" />
+
           </div>
-          <div class="mb-2">
-            <span class="text-2xl font-bold text-gray-800">54</span>
-            <span class="text-gray-500"> / 294 g</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
-            <div class="bg-yellow-500 h-2 rounded-full" style="width: 18%;"></div>
-          </div>
-          <span class="text-xs text-gray-500">18% of daily goal</span>
+
+          <% if (plan) { %>
+            <div class="mb-2">
+              <span class="text-2xl font-bold text-gray-800">
+                <%= plan.carbs %>
+              </span>
+              <span class="text-gray-500"> / <%= plan.carbs %> g</span>
+            </div>
+
+            <% let carbPercent=Math.round((0 / plan.carbs) * 100); %>
+
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                <div class="bg-yellow-500 h-2 rounded-full" style="width: <%= carbPercent %>%"></div>
+              </div>
+              <span class="text-xs text-gray-500">
+                <%= carbPercent %>% of daily goal
+              </span>
+              <% } else { %>
+                <p class="text-gray-500">No plan yet</p>
+                <% } %>
         </div>
 
 
         <div class="bg-white rounded-lg border border-gray-200 p-4">
           <div class="flex items-center justify-between mb-3">
             <span class="text-sm text-gray-600">Fats</span>
-            <Droplet class="w-5 h-5 text-cyan-400" />
+
           </div>
-          <div class="mb-2">
-            <span class="text-2xl font-bold text-gray-800">10</span>
-            <span class="text-gray-500"> / 99 g</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
-            <div class="bg-cyan-400 h-2 rounded-full" style="width: 22%;"></div>
-          </div>
-          <span class="text-xs text-gray-500">10% of daily goal</span>
+
+          <% if (plan) { %>
+            <div class="mb-2">
+              <span class="text-2xl font-bold text-gray-800">
+                <%= plan.fats %>
+              </span>
+              <span class="text-gray-500"> / <%= plan.fats %> g</span>
+            </div>
+
+            <% let fatPercent=Math.round((0 / plan.fats) * 100); %>
+
+              <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                <div class="bg-cyan-400 h-2 rounded-full" style="width: <%= fatPercent %>%"></div>
+              </div>
+              <span class="text-xs text-gray-500">
+                <%= fatPercent %>% of daily goal
+              </span>
+              <% } else { %>
+                <p class="text-gray-500">No plan yet</p>
+                <% } %>
         </div>
 
-
-        <div class="bg-white rounded-lg border border-gray-200 p-4">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-sm text-gray-600">Calories</span>
-            <Zap class="w-5 h-5 text-orange-400" />
-          </div>
-          <div class="mb-2">
-            <span class="text-2xl font-bold text-gray-800">531</span>
-            <span class="text-gray-500"> / 2406 kcal</span>
-          </div>
-          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
-            <div class="bg-orange-400 h-2 rounded-full" style="width: 22%;"></div>
-          </div>
-          <span class="text-xs text-gray-500">22% of daily goal</span>
-        </div>
       </div>
 
 

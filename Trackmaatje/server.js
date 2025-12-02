@@ -30,20 +30,33 @@ app.use(
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const userInfoRoute = require("./routes/userinfo");
+const UserInfo = require("./models/userinfo");
 
 app.use("/", registerRoute);
 app.use("/", loginRoute);
 app.use("/", userInfoRoute);
 
-app.get("/", (req, res) => {
-  res.render("index",{ title: "home"});
-});
+app.get("/", async (req, res) => {  
+  const userId = req.session.userId;
+  console.log("User ID:", userId);
+  let plan = null;
 
+  if (userId) {
+    plan = await UserInfo.findOne({ user: userId })
+      .sort({ date: -1 })
+      .lean();
+  }
+
+
+  res.render("index", {
+    title: "home",
+    plan
+  });
+});
 
 
 mongoose
   .connect("mongodb://localhost:27017/trackmaatje",{})
-  .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
 const PORT = process.env.PORT || 3000;

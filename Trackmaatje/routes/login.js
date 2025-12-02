@@ -24,11 +24,20 @@ router.post("/login", async (req, res) => {
         }
         
         req.session.userId = user._id;
+        
         res.redirect("/");
     } catch (err) {
         console.error(err);
         res.status(500).send("Login error");
     }
+});
+router.post("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).send("Logout error");
+        }   
+        res.redirect("/login");
+    });
 });
 
 module.exports = router;

@@ -1,42 +1,26 @@
 const express = require("express");
 const router = express.Router();
 const UserInfo = require("../models/userinfo");
-const User = require("../models/users");
 
 
 router.get("/foodplan", async (req, res) => {
   try {
-    if (!req.session.userId) {
-      return res.redirect("/login");
-    }
-
-    const user = await User.findById(req.session.userId).lean();
-
-    console.log(user);
+    const userId = req.session.userId;
+    console.log(userId);
     
-
-    const info = await UserInfo.findOne({ user: req.session.userId })
+    if (!userId) return res.redirect("/login");
+    const latestInfo = await UserInfo.findOne({ user: userId })
       .sort({ date: -1 })
       .lean();
 
-    if (!info) {
-      return res.redirect("/userinfo"); 
-    }
-
- 
-    const plan = createFoodPlan(info);
-
-
     res.render("foodplan", {
       title: "Food Plan",
-      user,
-      info,
-      plan,
+      plan: latestInfo || null,
     });
 
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server error");
+    res.status(500).send("Error loading food plan");
   }
 });
 
@@ -44,10 +28,16 @@ router.get("/foodplan", async (req, res) => {
 router.post("/userinfo", async (req, res) => {
   try {
     const userId = req.session.userId;
+    const info = req.body
+
+     const plan = createFoodPlan(info);
+     console.log(plan);
+     
+    
 
     if (!userId) return res.status(401).send("Not logged in");
 
-    const { age, weight, height, activitylevel, goal } = req.body;
+    const { age, weight, height, activitylevel, goal, } = req.body;
 
     await UserInfo.create({
       user: userId,
@@ -55,6 +45,10 @@ router.post("/userinfo", async (req, res) => {
       weight,
       length: height,
       activitylevel,
+      calories: plan.calories,
+      fats: plan.fats,
+      carbs: plan.carbs,
+      proteins: plan.proteins,
       date: new Date(),
       goal,
       streak: 0,
@@ -89,8 +83,6 @@ router.post("/userinfo/update", async (req, res) => {
   }
 });
 
-
-// ---------- DELETE INFO ----------
 router.delete("/:id", async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -111,19 +103,18 @@ router.delete("/:id", async (req, res) => {
 });
 
 
-// ---------- FOOD PLAN CALCULATION ----------
+
 function createFoodPlan(info, gender = "male") {
-  const { weight, length, age, activitylevel, goal } = info;
+  const weight = Number(info.weight);
+  const height = Number(info.height);
+  const age = Number(info.age);
+  const activitylevel = info.activitylevel;
+  const goal = info.goal;
 
-  // 1. BMR
   let BMR;
-  if (gender === "male") {
-    BMR = 10 * weight + 6.25 * length - 5 * age + 5;
-  } else {
-    BMR = 10 * weight + 6.25 * length - 5 * age - 161;
-  }
+  if (gender === "male") BMR = 10 * weight + 6.25 * height - 5 * age + 5;
+  else BMR = 10 * weight + 6.25 * height - 5 * age - 161;
 
-  // 2. Activity multiplier
   const multiplier = {
     sedentary: 1.2,
     light: 1.375,
@@ -134,25 +125,13 @@ function createFoodPlan(info, gender = "male") {
 
   const TDEE = BMR * multiplier;
 
-  // 3. Goal adjustments
-  let calories = TDEE;
-  if (goal === "lose") calories -= 350;
-  if (goal === "gain") calories += 350;
+  let calories = Math.round(goal === "lose" ? TDEE - 350 : goal === "gain" ? TDEE + 350 : TDEE);
+  const proteins = Math.round(weight * 2);
+  const fats = Math.round((calories * 0.25) / 9);
+  const carbs = Math.round((calories - (proteins * 4 + fats * 9)) / 4);
 
-  calories = Math.round(calories);
-
-  // 4. Macros
-  const protein = Math.round(weight * 2);
-  const fat = Math.round((calories * 0.25) / 9);
-  const carbs = Math.round((calories - protein * 4 - fat * 9) / 4);
-
-  return {
-    TDEE: Math.round(TDEE),
-    calories,
-    protein,
-    carbs,
-    fats: fat,
-  };
+  return { TDEE: Math.round(TDEE), calories, proteins, carbs, fats };
 }
+
 
 module.exports = router;
