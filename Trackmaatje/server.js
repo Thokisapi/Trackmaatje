@@ -54,7 +54,6 @@ app.get("/", async (req, res) => {
     plan,
     userId,
     firstname: req.session.firstname || null,
-    lastname: req.session.lastname || null,
   });
 });
 
