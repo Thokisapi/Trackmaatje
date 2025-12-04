@@ -31,10 +31,12 @@ const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const userInfoRoute = require("./routes/userinfo");
 const UserInfo = require("./models/userinfo");
+const foodRoute = require("./routes/foods");
 
 app.use("/", registerRoute);
 app.use("/", loginRoute);
 app.use("/", userInfoRoute);
+app.use("/", foodRoute);
 
 app.get("/", async (req, res) => {  
   const userId = req.session.userId;  

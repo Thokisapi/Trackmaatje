@@ -24,7 +24,6 @@ router.get("/foodplan", async (req, res) => {
   }
 });
 
-
 router.post("/userinfo", async (req, res) => {
   try {
     const userId = req.session.userId;
