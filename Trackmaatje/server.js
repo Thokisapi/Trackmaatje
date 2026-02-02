@@ -26,7 +26,6 @@ app.use(
   })
 );
 
-
 const registerRoute = require("./routes/register");
 const loginRoute = require("./routes/login");
 const userInfoRoute = require("./routes/userinfo");
