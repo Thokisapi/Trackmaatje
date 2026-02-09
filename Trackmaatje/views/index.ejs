@@ -15,7 +15,6 @@
 
 <body class="min-h-screen w-full bg-white flex items-center justify-center">
 
-
   <div class="min-h-screen w-full bg-gray-50">
 
     <header class="bg-white border-b size-full border-gray-200 px-6 py-4">
@@ -49,116 +48,131 @@
 
 
     <main class="max-w-7xl mx-auto px-6 py-8">
-
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl font-semibold text-gray-800">Daily Overview</h2>
-        <div class="flex items-center gap-4">
-          <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-200">
-            <span class="text-sm text-gray-600">Streak:</span>
-            <span class="font-semibold text-gray-800">69</span>
-            <Flame class="w-5 h-5 text-orange-500" />
-          </div>
-          <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-            class=" w-20flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
-            <Plus class="w-5 h-5" />
-            Add Food
-          </button>
+      <% if (!plan) { %>
+        <div class="text-center py-16">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">Welcome to Trackmaatje!</h2>
+          <p class="text-gray-600 mb-8">It looks like you haven't set up your food plan yet. Click the button below to get started!</p>
+        <div class="flex items-center justify-center py-16">
+          <a href="/foodplan"
+            class="inline-flex items-center justify-center rounded-lg bg-green-600 px-6 py-3 text-white font-semibold hover:bg-green-700 transition-colors">
+            Go to Foodplan
+          </a>
         </div>
-      </div>
+      <% } else { %>
+      <div class="space-y-6">
 
-      <div id="default-modal" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black/30">
-        <div class="relative p-4 w-full max-w-xl">
-          <div class="relative bg-white border border-gray-200 rounded-lg shadow-lg p-6">
-
-            <!-- Header -->
-            <div class="flex justify-between items-start pb-4">
-              <div>
-                <h3 class="text-xl font-semibold text-gray-800">Add food item</h3>
-                <p class="text-gray-500 text-sm mt-1">Enter the nutritional information for your food item</p>
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800">Daily Overview</h2>
+            <div class="flex items-center gap-4">
+              <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-200">
+                <span class="text-sm text-gray-600">Streak:</span>
+                <span class="font-semibold text-gray-800">69</span>
+                <Flame class="w-5 h-5 text-orange-500" />
               </div>
-
-              <button type="button"
-                class="text-gray-500 hover:bg-gray-100 rounded-lg w-9 h-9 flex items-center justify-center"
-                data-modal-hide="default-modal">
-                <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M6 18 17.94 6M18 18 6.06 6" />
-                </svg>
+              <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+                class=" w-20flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                <Plus class="w-5 h-5" />
+                Add Food
               </button>
             </div>
-
-            <!-- Body -->
-            <div class="space-y-6">
-
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <form action="/addfood" method="post">
-                  <label class="block text-sm font-medium mb-1 text-gray-700">Food name</label>
-                  <input type="text" name="foodItem" class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                    placeholder="Chicken breast" />
-                </div>
-
-                <div>
-                  <label class="block text-sm font-medium mb-1 text-gray-700">Amount (in grams)</label>
-                  <input type="number" name="amount" class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                    placeholder="eg. 300g" />
-                </div>
-              </div>
-
-              <div>
-                <select
-                   name="type" class="block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-sm text-gray-700">
-                  <option disabled selected>Select meal</option>
-                  <option value="breakfast">Breakfast</option>
-                  <option value="lunch">Lunch</option>
-                  <option value="dinner">Dinner</option>
-                  <option value="snack">Snack</option>
-                </select>
-              </div>
-
-              <div class="grid grid-cols-3 gap-4">
-                <div>
-                  <label class="block text-sm font-medium mb-1 text-gray-700">Protein (g)</label>
-                  <input type="number" name="protein" class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                    value="0" />
-                </div>
-
-                <div>
-                  <label class="block text-sm font-medium mb-1 text-gray-700">Carbs (g)</label>
-                  <input type="number" name="carbs" class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                    value="0" />
-                </div>
-
-                <div>
-                  <label class="block text-sm font-medium mb-1 text-gray-700">Fats (g)</label>
-                  <input type="number" name="fats" class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                    value="0" />
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium mb-1 text-gray-700">Calories</label>
-                <input type="number" name="calories" class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
-                  placeholder="Calories" />
-              </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="flex justify-end gap-3 pt-6">
-              <button data-modal-hide="default-modal"
-                class="px-4 py-2.5 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
-                Cancel
-              </button>
-
-              <button type="submit" class="px-4 py-2.5 text-sm text-white bg-green-600 rounded-lg hover:bg-green-700">
-                Add food
-              </button>
-              </form>
-            </div>
-
           </div>
-        </div>
+
+          <div id="default-modal" tabindex="-1" aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black/30">
+            <div class="relative p-4 w-full max-w-xl">
+              <div class="relative bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+
+                <!-- Header -->
+                <div class="flex justify-between items-start pb-4">
+                  <div>
+                    <h3 class="text-xl font-semibold text-gray-800">Add food item</h3>
+                    <p class="text-gray-500 text-sm mt-1">Enter the nutritional information for your food item</p>
+                  </div>
+
+                  <button type="button"
+                    class="text-gray-500 hover:bg-gray-100 rounded-lg w-9 h-9 flex items-center justify-center"
+                    data-modal-hide="default-modal">
+                    <svg class="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 18 17.94 6M18 18 6.06 6" />
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Body -->
+
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <form action="/addfood" method="post">
+                      <label class="block text-sm font-medium mb-1 text-gray-700">Food name</label>
+                      <input type="text" name="foodItem"
+                        class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
+                        placeholder="Chicken breast" />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium mb-1 text-gray-700">Amount (in grams)</label>
+                    <input type="number" name="amount"
+                      class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
+                      placeholder="eg. 300g" />
+                  </div>
+                </div>
+
+                <div>
+                  <select name="type"
+                    class="block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg text-sm text-gray-700">
+                    <option disabled selected>Select meal</option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="snack">Snack</option>
+                  </select>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium mb-1 text-gray-700">Protein (g)</label>
+                    <input type="number" name="protein"
+                      class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm" value="0" />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium mb-1 text-gray-700">Carbs (g)</label>
+                    <input type="number" name="carbs"
+                      class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm" value="0" />
+                  </div>
+
+                  <div>
+                    <label class="block text-sm font-medium mb-1 text-gray-700">Fats (g)</label>
+                    <input type="number" name="fats"
+                      class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm" value="0" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-sm font-medium mb-1 text-gray-700">Calories</label>
+                  <input type="number" name="calories"
+                    class="w-full px-3 py-2.5 bg-gray-100 border border-gray-300 rounded-lg text-sm"
+                    placeholder="Calories" />
+                </div>
+              </div>
+
+              <!-- Footer -->
+              <div class="flex justify-end gap-3 pt-6">
+                <button data-modal-hide="default-modal"
+                  class="px-4 py-2.5 text-sm bg-white border border-gray-300 rounded-lg hover:bg-gray-100">
+                  Cancel
+                </button>
+
+                <button type="submit" class="px-4 py-2.5 text-sm text-white bg-green-600 rounded-lg hover:bg-green-700">
+                  Add food
+                </button>
+                </form>
+              </div>
+
+            </div>
+          </div>
       </div>
 
       <div class="grid grid-cols-4 gap-4 mb-8">
@@ -167,6 +181,9 @@
           <div class="flex items-center justify-between mb-3">
             <span class="text-sm text-gray-600">Calories</span>
           </div>
+
+
+
 
           <% if (plan) { %>
             <div class="mb-2">
@@ -352,6 +369,7 @@
           </table>
         </div>
       </div>
+      <% } %>
     </main>
   </div>
 </body>
